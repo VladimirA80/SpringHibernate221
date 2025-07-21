@@ -9,5 +9,7 @@ public interface UserService {
 
     List<User> listUsers();
 
-    List<User> findByNameAndSeries(String model, int series);
+    List<User> findByModelAndSeries(String model, int series);
+
+    User findByName(String userName);
 }

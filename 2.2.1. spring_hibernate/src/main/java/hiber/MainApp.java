@@ -64,10 +64,14 @@ public class MainApp {
 
         String model = "GAZ";
         int series = 21;
-        List<User> users2 = userService.findByNameAndSeries(model, series);
+        List<User> users2 = userService.findByModelAndSeries(model, series);
         for (User user : users2) {
             System.out.println(model + " " + series + " - Пользователь: " + user.getFirstName() + " : " + user.getLastName());
         }
+
+        String userName = "User4";
+        User users3 = userService.findByName(userName);
+        System.out.println(users3.getFirstName() + " владеет  " + users3.getCar().getModel() + " " + users3.getCar().getSeries());
 
         context.close();
     }

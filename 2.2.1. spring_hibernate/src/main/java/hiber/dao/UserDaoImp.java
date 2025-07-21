@@ -27,7 +27,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public List<User> findByNameAndSeries(String model, int series) {
+    public List<User> findByModelAndSeries(String model, int series) {
         String hql = "FROM User u WHERE u.car.model = :model AND u.car.series = :series";
         return sessionFactory.getCurrentSession()
                 .createQuery(hql, User.class)
@@ -36,5 +36,13 @@ public class UserDaoImp implements UserDao {
                 .getResultList();
     }
 
+    @Override
+    public User findByName (String userName) {
+        String hql = "FROM User u LEFT JOIN FETCH u.car WHERE u.firstName = :firstName";
+        return sessionFactory.getCurrentSession()
+                .createQuery(hql, User.class)
+                .setParameter("firstName", userName)
+                .uniqueResult();
+    }
 
 }
