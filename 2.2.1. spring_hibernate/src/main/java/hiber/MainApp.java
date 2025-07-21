@@ -45,6 +45,11 @@ public class MainApp {
         car4.setUser(user4);
         userService.add(user4);
 
+        User user5 = new User("User5", "Lastname5", "user5@mail.ru");
+        Car car5 = new Car("GAZ", 21);
+        user5.setCar(car5);
+        car5.setUser(user5);
+        userService.add(user5);
 
         List<User> users = userService.listUsers();
         for (User user : users) {
@@ -57,10 +62,12 @@ public class MainApp {
             System.out.println();
         }
 
-        String modelRequest = "GAZ";
-        int seriesRequest = 21;
-        User user = userService.findUser(modelRequest, seriesRequest);
-        System.out.println(modelRequest + " " + seriesRequest + " - Пользователь: " + user.getFirstName() + " : " + user.getLastName());
+        String model = "GAZ";
+        int series = 21;
+        List<User> users2 = userService.findByNameAndSeries(model, series);
+        for (User user : users2) {
+            System.out.println(model + " " + series + " - Пользователь: " + user.getFirstName() + " : " + user.getLastName());
+        }
 
         context.close();
     }

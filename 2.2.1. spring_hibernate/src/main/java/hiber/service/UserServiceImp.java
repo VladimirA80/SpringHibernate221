@@ -28,8 +28,8 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public User findUser(String model, int series) {
-        return userDao.findUser(model, series);
+    public List<User> findByNameAndSeries(String model, int series) {
+        return userDao.findByNameAndSeries(model, series);
     }
 
 }
