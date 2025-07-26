@@ -64,10 +64,9 @@ public class MainApp {
 
         String model = "GAZ";
         int series = 21;
-        List<User> users2 = userService.findByModelAndSeries(model, series);
-        for (User user : users2) {
-            System.out.println(model + " " + series + " - Пользователь: " + user.getFirstName() + " : " + user.getLastName());
-        }
+        User userDefined = userService.findByModelAndSeries(model, series);
+        System.out.println(model + " " + series + " - Пользователь: " + userDefined.getFirstName() + " : " + userDefined.getLastName());
+
 
         String userName = "User4";
         User users3 = userService.findByName(userName);
